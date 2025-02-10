@@ -1,0 +1,129 @@
+/* ✅ إعدادات عامة */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: #f4f4f4;
+}
+
+/* ✅ Sidebar الأساسي */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100vh;
+    background-color: #f9fafb;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2rem;
+    transition: left 0.3s ease-in-out;
+    z-index: 1000; /* تأكد من أن الـ navbar فوق العناصر الأخرى */
+   
+}
+
+.nav-logo {
+    width: 100%;
+    margin-bottom: 2rem;
+    img {
+        width: 100%;
+    }
+}
+
+.fa-utensils{
+    color: black;
+    font-size: 17px;
+    margin: 10px;
+}
+
+.nav-menu {
+    list-style: none;
+    width: 100%;
+}
+
+.nav-item {
+    margin: 1rem 0;
+   
+}
+
+.nav-link {
+    font-size: 1.5rem;
+    color: black;
+    text-decoration: none;
+    display: block;
+    // padding: 1rem;
+    transition: 0.3s;
+    border: 1px solid gray;
+    border-radius: 10px;
+    width: 200px;
+    transition: all 0.3s;
+    
+}
+
+.nav-link:hover {
+    transform: scale(1.1);
+}
+
+/* ✅ زر القائمة (يظهر فقط في الشاشات الصغيرة) */
+.hamburger {
+    display: none;
+    position: fixed;
+    top: 1.5rem;
+    left: 2rem;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.bar {
+    display: block;
+    width: 30px;
+    height: 4px;
+    margin: 5px 0;
+    background-color: black;
+    transition: 0.3s;
+}
+
+/* ✅ التأثير عند فتح القائمة */
+.hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* ✅ المحتوى الرئيسي */
+.main-content {
+    margin-left: 250px; /* تأكد من أن المحتوى يبدأ بعد الـ navbar */
+    padding: 2rem;
+    min-height: 100vh;
+}
+
+/* ✅ ✅ الشاشات الصغيرة ✅ ✅ */
+@media (max-width: 768px) {
+    .navbar {
+        left: -100%;
+        width: 70%;
+    }
+
+    .navbar.active {
+        left: 0;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+}
