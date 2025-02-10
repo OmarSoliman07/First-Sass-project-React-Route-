@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./Navbar.css";
 import logo from "../../assets/logo-BfNap0Pe.png";
 
-
 export default function Navbar() {
     const [isActive, setIsActive] = useState(false);
 
@@ -26,19 +25,16 @@ export default function Navbar() {
     return (
         <header className="header">
             <nav className={`navbar ${isActive ? "active" : ""}`}>
-                <a href="/" className="nav-logo"><img src={logo} alt="" /></a>
+                <a href="/" className="nav-logo"><img src={logo} alt="Logo" /></a>
                 <ul className="nav-menu">
                     <li className="nav-item">
-                       
-                        <a href="/" className="nav-link"> <i class="fa-solid fa-utensils"></i>Home</a>
+                        <a href="/" className="nav-link"><i className="fa-solid fa-utensils"></i> Home</a>
                     </li>
                     <li className="nav-item">
-                       
-                        <a href="#" className="nav-link"> <i class="fa-solid fa-utensils"></i>About</a>
+                        <a href="#" className="nav-link"><i className="fa-solid fa-utensils"></i> About</a>
                     </li>
                     <li className="nav-item">
-                       
-                        <a href="#" className="nav-link"> <i class="fa-solid fa-utensils"></i>Contact</a>
+                        <a href="#" className="nav-link"><i className="fa-solid fa-utensils"></i> Contact</a>
                     </li>
                 </ul>
             </nav>

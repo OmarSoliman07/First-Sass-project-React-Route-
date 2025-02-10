@@ -1,8 +1,7 @@
-@charset "UTF-8";
 .footer {
   background-color: #fff;
   min-height: auto !important;
-  font-family: cursive;
+  font-family: system-ui;
   z-index: 9999999999;
   display: flex;
   position: relative;
@@ -24,7 +23,7 @@
 
 .footer-img1 {
   width: 5%;
-  margin-left: 10px; /* مسافة بين النص والصورة */
+  margin-left: 10px;
 }
 
 .FooterName {

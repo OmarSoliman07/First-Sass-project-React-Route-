@@ -4,20 +4,27 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEarthAmericas } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import "./Home.scss";
+import Category from "../Category/Category"; // تأكد من صحة المسار
 
 export default function Home() {
     const [productList, setProductList] = useState([]);
     const [loading, setLoading] = useState(true);
-    const navigate = useNavigate(); // لإدارة التنقل
+    const [selectedCategory, setSelectedCategory] = useState("All"); // تصنيف افتراضي
+    const navigate = useNavigate();
 
     useEffect(() => {
         getProductList();
-    }, []);
+    }, [selectedCategory]); // تحديث القائمة عند تغيير التصنيف
 
     function getProductList() {
         setLoading(true);
+        const url =
+            selectedCategory === "All"
+                ? "https://www.themealdb.com/api/json/v1/1/search.php?s="
+                : `https://www.themealdb.com/api/json/v1/1/filter.php?c=${selectedCategory}`;
+
         axios
-            .get("https://www.themealdb.com/api/json/v1/1/search.php?s=")
+            .get(url)
             .then((res) => {
                 setProductList(res.data.meals || []);
             })
@@ -35,6 +42,10 @@ export default function Home() {
             <header>
                 <h1 className="mainTitle">Learn, Cook, Eat Your Food</h1>
             </header>
+
+            {/* ✅ تمرير التصنيف المحدد والدالة لتحديثه */}
+            <Category selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />  
+
             {loading ? (
                 <div className="loader"></div>
             ) : (
@@ -49,7 +60,7 @@ export default function Home() {
                             </div>
                             <button
                                 className="bg-main border border-transparent px-2 text-white translate-y-24 group-hover:translate-y-0 duration-500"
-                                onClick={() => navigate(`/item/${idMeal}`)} // التنقل عند النقر
+                                onClick={() => navigate(`/item/${idMeal}`)} 
                             >
                                 View Recipe
                             </button>

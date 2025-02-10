@@ -1,5 +1,3 @@
-@charset "UTF-8";
-/* ✅ إعدادات عامة */
 * {
   margin: 0;
   padding: 0;
@@ -7,11 +5,10 @@
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   background-color: #f4f4f4;
 }
 
-/* ✅ Sidebar الأساسي */
 .navbar {
   position: fixed;
   top: 0;
@@ -23,14 +20,19 @@ body {
   flex-direction: column;
   align-items: flex-start;
   padding: 2rem;
-  transition: left 0.3s ease-in-out;
-  z-index: 1000; /* تأكد من أن الـ navbar فوق العناصر الأخرى */
+  transition: background-color 0.3s ease-in-out, left 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.navbar.active {
+  background-color: red !important;
 }
 
 .nav-logo {
   width: 100%;
   margin-bottom: 2rem;
 }
+
 .nav-logo img {
   width: 100%;
 }
@@ -55,7 +57,6 @@ body {
   color: black;
   text-decoration: none;
   display: block;
-  transition: 0.3s;
   border: 1px solid gray;
   border-radius: 10px;
   width: 200px;
@@ -66,7 +67,6 @@ body {
   transform: scale(1.1);
 }
 
-/* ✅ زر القائمة (يظهر فقط في الشاشات الصغيرة) */
 .hamburger {
   display: none;
   position: fixed;
@@ -85,7 +85,6 @@ body {
   transition: 0.3s;
 }
 
-/* ✅ التأثير عند فتح القائمة */
 .hamburger.active .bar:nth-child(1) {
   transform: translateY(8px) rotate(45deg);
 }
@@ -98,14 +97,12 @@ body {
   transform: translateY(-8px) rotate(-45deg);
 }
 
-/* ✅ المحتوى الرئيسي */
 .main-content {
-  margin-left: 250px; /* تأكد من أن المحتوى يبدأ بعد الـ navbar */
+  margin-left: 250px;
   padding: 2rem;
   min-height: 100vh;
 }
 
-/* ✅ ✅ الشاشات الصغيرة ✅ ✅ */
 @media (max-width: 768px) {
   .navbar {
     left: -100%;

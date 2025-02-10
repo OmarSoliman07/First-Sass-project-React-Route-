@@ -1,6 +1,5 @@
-@charset "UTF-8";
 .meal-details {
-  font-family: cursive;
+  font-family: system-ui;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -11,12 +10,11 @@
   gap: 20px;
 }
 
-/* ✅ الصورة والمعلومات على اليسار */
 .left-section {
   width: 30%;
   display: flex;
   flex-direction: column;
-  align-items: center; /* توسيط النص */
+  align-items: center;
   text-align: center;
 }
 
@@ -24,14 +22,14 @@
   width: 100%;
   border-radius: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  margin-top: 10px; /* مسافة بعد العنوان */
+  margin-top: 10px;
 }
 
 .more-about-meal {
   display: flex;
-  justify-content: center; /* لتوسيط الأزرار أفقياً */
-  gap: 10px; /* مسافة بين الأزرار */
-  margin-top: 20px; /* مسافة أعلى العنصر */
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
 }
 
 .youtube, .website {
@@ -41,7 +39,7 @@
   height: 40px;
   border-radius: 10px;
   cursor: pointer;
-  font-family: cursive;
+  font-family: system-ui;
   font-weight: 400;
   font-size: medium;
 }
@@ -72,19 +70,17 @@
   background-color: #49dd9b;
 }
 
-/* ✅ نص التعليمات في المنتصف */
 .meal-text {
   width: 40%;
 }
 
 .meal-info {
   display: flex;
-  justify-content: center; /* توسيط العناصر */
-  gap: 15px; /* مسافة بين العناصر */
-  margin-top: 10px; /* مسافة بعد الصورة */
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
 }
 
-/* ✅ قائمة المكونات على اليمين */
 .ingredients {
   width: 30%;
   background: white;
@@ -110,7 +106,6 @@
   justify-content: space-between;
 }
 
-/* ✅ التصميم المتجاوب */
 @media (max-width: 768px) {
   .meal-details {
     flex-direction: column;
@@ -120,7 +115,7 @@
     width: 100%;
   }
   .left-section {
-    order: -1; /* يجعل العنوان والصورة في الأعلى */
+    order: -1;
   }
   .meal-text {
     text-align: center;

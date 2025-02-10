@@ -8,8 +8,8 @@ const router = createBrowserRouter([
     path: "/",
     element: <Layout />,
     children: [
-      { index: true, element: <Home /> }, // الصفحة الرئيسية
-      { path: "item/:id", element: <ItemsDetails /> }, // صفحة تفاصيل الوجبة
+      { index: true, element: <Home /> },
+      { path: "item/:id", element: <ItemsDetails /> },
     ],
   },
 ]);

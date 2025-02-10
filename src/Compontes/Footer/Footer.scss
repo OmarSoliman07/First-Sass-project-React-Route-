@@ -1,7 +1,7 @@
 $main-color: #ffffff;
 $second-color: #059669;
 $third-color: #21ba75;
-$main-font: cursive;
+$main-font: system-ui;
 
 .footer {
   background-color: #fff;
@@ -29,7 +29,7 @@ $main-font: cursive;
 
 .footer-img1 {
   width: 5%;
-  margin-left: 10px; /* مسافة بين النص والصورة */
+  margin-left: 10px; 
 }
 
 .FooterName {

@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./ItemsDetails.css";
 
 export default function ItemDetails() {
     const { id } = useParams();
+    const navigate = useNavigate(); 
     const [meal, setMeal] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        if (!id || isNaN(id)) {
+            navigate("/");
+            return;
+        }
+
         axios
             .get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
             .then((res) => {
@@ -20,12 +26,22 @@ export default function ItemDetails() {
             .finally(() => {
                 setLoading(false);
             });
-    }, [id]);
+    }, [id, navigate]);
 
     if (loading) return <div className="loader"></div>;
-    if (!meal) return <h2>Meal not found!</h2>;
 
-    // استخراج المكونات والكميات
+    if (!meal) {
+        return (
+            <div className="not-found">
+                <h2>Meal not found! 🍽️</h2>
+                <button onClick={() => navigate("/")} className="back-button">
+                    العودة للصفحة الرئيسية
+                </button>
+            </div>
+        );
+    }
+
+
     const ingredients = [];
     for (let i = 1; i <= 20; i++) {
         const ingredient = meal[`strIngredient${i}`];
@@ -37,7 +53,7 @@ export default function ItemDetails() {
 
     return (
         <div className="meal-details main-content w-10/12 mx-auto my-6">
-            {/* ✅ الصورة على اليسار */}
+           
             <div className="left-section">
                 <h2>{meal.strMeal}</h2>
                 <img src={meal.strMealThumb} className="img-details" alt={meal.strMeal} />
@@ -59,12 +75,12 @@ export default function ItemDetails() {
                 </div>
             </div>
 
-            {/* ✅ النص في المنتصف */}
+         
             <div className="meal-text">
                 <p><strong>Instructions:</strong> {meal.strInstructions}</p>
             </div>
 
-            {/* ✅ قائمة المكونات على اليمين */}
+            
             <div className="ingredients">
                 <h3>Ingredients</h3>
                 <ul>
